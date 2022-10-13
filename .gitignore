@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+=======
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+>>>>>>> c357826 (gradle+boot New Commit)
 
 ### NetBeans ###
 /nbproject/private/
@@ -9,19 +39,31 @@
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 ### Mac OS ###
 .DS_Store
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,intellij,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,intellij,java
+=======
+
+# Created by https://www.toptal.com/developers/gitignore/api/gradle
+# Edit at https://www.toptal.com/developers/gitignore?templates=gradle
+
+# Created by https://www.toptal.com/developers/gitignore/api/macos,gradle,java,intellij
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,gradle,java,intellij
+>>>>>>> c357826 (gradle+boot New Commit)
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
+<<<<<<< HEAD
 out/
 
+=======
+>>>>>>> c357826 (gradle+boot New Commit)
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -100,9 +142,15 @@ fabric.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
+<<<<<<< HEAD
 *.iml
 # modules.xml
 .idea
+=======
+# *.iml
+# modules.xml
+# .idea/misc.xml
+>>>>>>> c357826 (gradle+boot New Commit)
 # *.ipr
 
 # Sonarlint plugin
@@ -131,7 +179,10 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c357826 (gradle+boot New Commit)
 ### Java ###
 # Compiled class file
 *.class
@@ -189,4 +240,37 @@ Temporary Items
 
 ### macOS Patch ###
 # iCloud generated files
+<<<<<<< HEAD
 *.icloud
+=======
+*.icloud
+
+### Gradle ###
+.gradle
+**/build/
+!src/**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
+# Cache of project
+.gradletasknamecache
+
+# Eclipse Gradle plugin generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+### Gradle Patch ###
+# Java heap dump
+*.hprof
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,gradle,java,intellij
+>>>>>>> c357826 (gradle+boot New Commit)
