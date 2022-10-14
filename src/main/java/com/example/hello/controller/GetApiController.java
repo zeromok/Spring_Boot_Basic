@@ -1,8 +1,14 @@
 package com.example.hello.controller;
 
 
+import com.example.hello.DTO.UserRequest;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
+
+@Log4j2
 @RestController // 해당 클래스는 REST API 를 처리하는 Controller
 @RequestMapping("/api/get/")
 public class GetApiController {
@@ -38,9 +44,53 @@ public class GetApiController {
 
 
     // http://localhost:8080/api/get/query-param?user=steve&email=steve@gmail.com&age=30
-    public String queryParam(){
-        return "";
-    }
+    @GetMapping(path = "query-param")
+    public String queryParam(@RequestParam Map<String, String> queryParam){
+
+        StringBuilder sb = new StringBuilder();
+
+        queryParam.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+
+            sb.append(entry.getKey() + "=" + entry.getValue());
+
+        });
+
+        return sb.toString();
+
+    }// queryParam() - param 을 받는 1번째 방법
+
+
+    @GetMapping(path = "query-param02")
+    public String queryParam02(@RequestParam String name, @RequestParam int age) {
+
+        System.out.println(name);
+        System.out.println(age);
+
+        return name + age;
+
+    }// queryParam02() - param 을 받는 2번째 방법
+
+
+    @GetMapping(path = "query-param03")
+    public String queryParam03(UserRequest userRequest){
+
+        log.trace("==== query-param03 ====");
+
+        String name = userRequest.getName();
+        int age = userRequest.getAge();
+
+        log.info("name : {}", name);
+        log.info("age : {}", age );
+
+        return userRequest.toString();
+
+
+    }// queryParam02() - param 을 받는 2번째 방법
+
+
+
 
 
 }// end class

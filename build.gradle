@@ -12,9 +12,28 @@ repositories {
     mavenCentral()
 }
 
+/*
+    spring-boot-starter-web 에는 logging 모듈이 포함되어 있다.]
+    spring 에서 지원하는 기본 로깅 모튤은 logback 이기 때문에
+    사용하지 않는 모듈은 제거 해줘야 한다.
+*/
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 로깅
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.7.4'
+
+    // 롬복
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
 }
 
 tasks.named('test') {
