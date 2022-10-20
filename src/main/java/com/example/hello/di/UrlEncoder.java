@@ -1,4 +1,4 @@
-package com.example.hello;
+package com.example.hello.di;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
