@@ -1,4 +1,4 @@
-package com.example.hello.di;
+package com.example.hello.DTO;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
