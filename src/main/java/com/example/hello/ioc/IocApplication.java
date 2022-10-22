@@ -42,6 +42,7 @@ public class IocApplication {
 
             // =========================
             // Encoder
+            // Encoder 안 코드 수정으로 base, url 둘 다 쓸 수 있다.
             // =========================
             Encoder encoder = context.getBean(Encoder.class);
             String result = encoder.encode(url);
@@ -53,6 +54,7 @@ public class IocApplication {
 }// end class
 
 //@Configuration  // 한 개의 클래스에서 여러 빈을 등록
+// 코드 수정없이 여러 빈을 등록해 쓰려면 빈으로 하나씩 등록
 //class AppConfig{
 //
 //    @Bean("base64")
