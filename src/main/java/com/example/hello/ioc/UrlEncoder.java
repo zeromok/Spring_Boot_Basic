@@ -5,17 +5,19 @@ import org.springframework.stereotype.Component;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-@Component  // 빈으로 등록
+@Component("url")
 public class UrlEncoder implements MyEncoder {
 
-    public String encode(String message){
+    public String encode(String massage){
 
         try {
-            return URLEncoder.encode(message, "UTF-8");
+
+            return URLEncoder.encode(massage, "UTF-8");
+
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
+
     }
 
-}// end class
+}

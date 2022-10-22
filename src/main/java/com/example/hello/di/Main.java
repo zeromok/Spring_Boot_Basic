@@ -20,18 +20,20 @@ public class Main {
 //        String BaseResult = encoder.encode(url);
 //        log.info("result : {}", BaseResult);
 
-        // 인코딩 방법 2. : 인터페이스로 묶어 유지,보수 용이하게 만듦
+        // 인코딩 방법 2. : 같은 역활을 하는 메소드 encode() 를 인터페이스로 묶어 유지,보수 용이하게 만듦
 //        MyEncoder BaseEncoder = new Base64Encoder();
 //        String BaseResult = BaseEncoder.encode(url);
 //        log.info("result : {}", BaseResult);
 
         // 인코딩 방법 3. : Encoder 클래스 안 코드를 바꾸어 Base, Url 인코딩 한번에 수행
+        //                  하지만 인코더를 변경하려면 Encoder 코드 안을 수정해야한다.
 //        Encoder encoder = new Encoder();
 //        String result = encoder.encode(url);
 //        log.info("result : {}", result);
 
         // 인코딩 방법 4. : Encoder 를 건들지 않고 바꿔보기 = DI
-        Encoder encoder = new Encoder(new UrlEncoder());
+//        Encoder encoder = new Encoder(new UrlEncoder());
+        Encoder encoder = new Encoder(new Base64Encoder());
         String result = encoder.encode(url);
         log.info("result : {}", result);
 
