@@ -54,7 +54,7 @@ public class IocApplication {
 }// end class
 
 //@Configuration  // 한 개의 클래스에서 여러 빈을 등록
-// 코드 수정없이 여러 빈을 등록해 쓰려면 빈으로 하나씩 등록
+// 코드 수정없이 여러 빈을 등록해 쓰려면 빈으로 하나씩 등록 = 주의) Encoder 컴포넌트 해제하기
 //class AppConfig{
 //
 //    @Bean("base64")
