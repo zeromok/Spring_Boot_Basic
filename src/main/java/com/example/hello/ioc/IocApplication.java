@@ -1,13 +1,9 @@
 package com.example.hello.ioc;
 
-import com.example.hello.HelloApplication;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.batch.BatchDataSource;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Log4j2
@@ -42,7 +38,7 @@ public class IocApplication {
 
             // =========================
             // Encoder
-            // Encoder 안 코드 수정으로 base, url 둘 다 쓸 수 있다.
+            // Encoder 안 코드 수정으로(@Qualifier) base, url 둘 다 쓸 수 있다.
             // =========================
             Encoder encoder = context.getBean(Encoder.class);
             String result = encoder.encode(url);
