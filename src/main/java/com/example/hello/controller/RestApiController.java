@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/")
 public class RestApiController {
 
+
     @GetMapping("/method/{id}")
-    public void get(@PathVariable Long id, @RequestParam String name){
+    public String  get(@PathVariable Long id, @RequestParam String name){
         log.info("get method ");
         log.info("get method - id : {}", id);
         log.info("get method - name : {}", name);
+
+        return id + " " + name;
     }
 
 
     @PostMapping("/method/post")
-    public void post(@RequestBody User00 user){
+    public User00 post(@RequestBody User00 user){
         log.info("user : {}", user);
+
+        return user;
     }
 
 }// end class
