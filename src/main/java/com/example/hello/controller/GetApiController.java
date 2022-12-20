@@ -104,11 +104,7 @@ public class GetApiController {
 
         return userRequest.toString();
 
-
     }// queryParam03() - param 을 받는 3번째 방법 (추천, 권장)
-
-
-
 
 
 }// end class
