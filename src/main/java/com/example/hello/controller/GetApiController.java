@@ -14,21 +14,28 @@ import java.util.Map;
 public class GetApiController {
 
     @GetMapping(path = "/hello")    // http://localhost:8080/api/get/hello
+    // path = "명시적인 주소 지정"
     public String getHello(){
+
         return "get Hello";
+
     }// getHello()
 
-    // 옛 방식
+
     @RequestMapping(path = "/hi", method = RequestMethod.GET)   // http://localhost:8080/api/get/hi
+    // 옛 방식
     public String hi(){
         return "get hi";
     }// hi()
 
 
     @GetMapping("/path-variable/{name}")   // http://localhost:8080/api/get/path-variable/{name} -> {} : 변수
+    // {} 안 이름과 변수이름은 같아야 한다.
     public String pathVariable(@PathVariable String name){
-        System.out.println("PathVariable" + name);
+
+        log.info("PathVariable : {}", name);
         return name;
+
     }// pathVariable()
 
     /*
@@ -36,11 +43,14 @@ public class GetApiController {
         구분해주기 위해 name 이라는 속성 사용
         즉, pathVariable 과 변수의 이름이 다를 때
     */
-    @GetMapping("/path-variable/{id}")   // http://localhost:8080/api/get/path-variable/{name} -> {} : 변수
-    public String pathVariable(@PathVariable(name = "id") String pathName, String  name){
-        System.out.println("PathVariable" + pathName);
-        return name;
-    }// pathVariable()
+//    @GetMapping("/path-variable/{id}")   // http://localhost:8080/api/get/path-variable/{name} -> {} : 변수
+//    // {} 안 이름과 다른 이름의 변수에 담고 싶을 땐?
+//    public String pathVariable(@PathVariable(name = "id") String pathName){
+//
+//        log.info("PathVariable : {}", pathName);
+//        return pathName;
+//
+//    }// pathVariable()
 
 
     // http://localhost:8080/api/get/query-param?user=steve&email=steve@gmail.com&age=30
@@ -50,8 +60,8 @@ public class GetApiController {
         StringBuilder sb = new StringBuilder();
 
         queryParam.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey());
-            System.out.println(entry.getValue());
+            log.info(entry.getKey());
+            log.info(entry.getValue());
 
             sb.append(entry.getKey() + "=" + entry.getValue());
 
@@ -59,14 +69,22 @@ public class GetApiController {
 
         return sb.toString();
 
+           /* queryParam.forEach( (key, value) -> {
+                log.info(key);
+                log.info(value);
+
+                sb.append(key).append("=").append(value);
+            });
+            return sb.toString();*/
+
     }// queryParam() - param 을 받는 1번째 방법
 
 
-    @GetMapping(path = "query-param02")
+    @GetMapping(path = "query-param02") // http://localhost:8080/api/get/query-param02?name=mokk&age=30
     public String queryParam02(@RequestParam String name, @RequestParam int age) {
 
-        System.out.println(name);
-        System.out.println(age);
+        log.info(name);
+        log.info(age);
 
         return name + age;
 
