@@ -1,6 +1,6 @@
 package com.example.hello.controller;
 
-import com.example.hello.DTO.User;
+import com.example.hello.dto.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

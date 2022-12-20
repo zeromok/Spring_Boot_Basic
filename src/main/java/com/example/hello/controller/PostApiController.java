@@ -1,7 +1,7 @@
 package com.example.hello.controller;
 
 
-import com.example.hello.DTO.PostRequestDto;
+import com.example.hello.dto.PostRequestDto;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

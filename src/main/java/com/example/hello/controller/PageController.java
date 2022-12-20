@@ -1,6 +1,6 @@
 package com.example.hello.controller;
 
-import com.example.hello.DTO.User;
+import com.example.hello.dto.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

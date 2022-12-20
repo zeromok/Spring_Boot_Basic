@@ -1,6 +1,6 @@
 package com.example.hello;
 
-import com.example.hello.DTO.User;
+import com.example.hello.dto.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;

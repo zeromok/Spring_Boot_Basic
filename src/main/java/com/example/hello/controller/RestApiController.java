@@ -1,7 +1,7 @@
 package com.example.hello.controller;
 
 
-import com.example.hello.DTO.User00;
+import com.example.hello.dto.User00;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
