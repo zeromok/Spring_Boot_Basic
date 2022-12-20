@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<Configuration status="WARN" monitorInterval="30">
+<Configuration status="DEBUG" monitorInterval="30">
 <!--    최상위 요소-->
     <Properties>
         <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} -- %highlight{%5p} -- [ %5.50t ] %-1.50c{1.}.%-1.20M:%L  :    %highlight{%m%n%ex}</Property>

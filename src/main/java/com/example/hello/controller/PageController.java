@@ -11,7 +11,7 @@ public class PageController {
 
     @RequestMapping("/main")
     public String main() {
-        return "main.html";
+        return "index.html";
     }// main()
 
 
