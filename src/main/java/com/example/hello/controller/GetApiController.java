@@ -81,7 +81,9 @@ public class GetApiController {
 
 
     @GetMapping(path = "query-param02") // http://localhost:8080/api/get/query-param02?name=mokk&age=30
-    public String queryParam02(@RequestParam String name, @RequestParam int age) {
+    public String queryParam02(
+            @RequestParam String name,
+            @RequestParam int age) {
 
         log.info(name);
         log.info(age);
