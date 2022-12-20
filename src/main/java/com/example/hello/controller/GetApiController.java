@@ -95,6 +95,7 @@ public class GetApiController {
 
     @GetMapping(path = "query-param03")
     public String queryParam03(UserRequest userRequest){
+        // UserRequest : RequestDTO
 
         log.trace("==== query-param03 ====");
 
