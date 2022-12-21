@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class PostRequestDto {
+    // POST 핸들러 메소드에서 어떤 값을 받을지 모르니 DTO 를 만들어 데이터를 받자
 
     private String account;
     private String email;

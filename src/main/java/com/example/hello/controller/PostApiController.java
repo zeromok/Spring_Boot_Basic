@@ -18,6 +18,7 @@ public class PostApiController {
 
     @PostMapping("/post")
     public void post(@RequestBody Map<String , Object> requestData){
+        // 요청 바디에 있는 데이터를 꺼내오려면 명시적인 @RequestBody 가 필요하다.
         log.trace("==== post() ====");
 
         requestData.forEach((key, value) -> {
