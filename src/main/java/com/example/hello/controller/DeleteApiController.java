@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class DeleteApiController {
 
     @DeleteMapping("/delete/{userId}")
+    // 쿼리스트링은 모두 String 타입
     public void delete(@PathVariable String userId, @RequestParam String account) {
         log.trace("==== delete() ====");
 
