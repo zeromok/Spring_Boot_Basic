@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController // 해당 클래스는 REST API 를 처리하는 Controller, @Controller + @RequestBody
+@RestController
+// 해당 클래스는 REST API 를 처리하는 Controller, @Controller + @ResponseBody -> 주 용도 : JSON 형태의 객체 데이터 반환
 @RequestMapping("/api/") // Base URL
 public class ApiController {
 
