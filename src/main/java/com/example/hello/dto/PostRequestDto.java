@@ -14,7 +14,7 @@ public class PostRequestDto {
 
 
 //    private String phone_number;
-    @JsonProperty("phone_number")
+    @JsonProperty("phone_number") // 요청 형식이 스네이크 형식일 때
     private String phoneNumber;
     /*
         요청은 _ 기법일 때 오류 null
