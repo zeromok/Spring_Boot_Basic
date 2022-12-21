@@ -16,7 +16,7 @@ public class DeleteApiController {
         log.info("userId : {}", userId);
         log.info("account : {}", account);
 
-        // 리소스가 있던 없던 항상 200번이 날아온다. OK
+        // 리소스가 있던 없던 항상 200번이 날아온다. OK -> 멱등성 0
 
     }// delete()
 
