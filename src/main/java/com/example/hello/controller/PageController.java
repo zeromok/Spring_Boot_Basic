@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+// 페이지를 반환할 때 사용
 public class PageController {
 
     @RequestMapping("/main")
@@ -22,7 +23,7 @@ public class PageController {
     public User user() {
 
 //        User user = new User();
-        var user = new User();  // 타입추론을 통해 좀 더 쉽게 생성자를 만들 수 있다.
+        var user = new User();  // 타입추론(var)을 통해 좀 더 쉽게 생성자를 만들 수 있다.
         user.setName("user00");
         user.setAddress("fdsafdsa");
 
