@@ -8,12 +8,13 @@ public class Encoder implements MyEncoder {
 
     private MyEncoder myEncoder;
 
-    public Encoder(@Qualifier("url") MyEncoder myEncoder){
+    public Encoder(@Qualifier("base") MyEncoder myEncoder){
 
         this.myEncoder = myEncoder;
 
     }
 
+    @Override
     public String encode(String massage){
 
         return myEncoder.encode(massage);

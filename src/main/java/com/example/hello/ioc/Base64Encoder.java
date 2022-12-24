@@ -7,6 +7,7 @@ import java.util.Base64;
 @Component("base")
 public class Base64Encoder implements MyEncoder {
 
+    @Override
     public String encode(String massage){
 
         return Base64.getEncoder().encodeToString(massage.getBytes());

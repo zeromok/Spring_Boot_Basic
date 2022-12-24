@@ -8,6 +8,7 @@ import java.net.URLEncoder;
 @Component("url")
 public class UrlEncoder implements MyEncoder {
 
+    @Override
     public String encode(String massage){
 
         try {

@@ -17,7 +17,7 @@ public class IocApplication {
             String url = "www.naver.com/books/it?page=10&size=20&name=spring-boot";  // 인코딩 할 url
 
             // =========================
-            // Base64
+            // Base64 Encoding
             // =========================
 //            Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
 //            Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
@@ -27,7 +27,7 @@ public class IocApplication {
 //            log.info("BaseResult : {}", BaseResult);
 
             // =========================
-            // URL
+            // URL Encoding
             // =========================
 //            UrlEncoder urlEncoder = context.getBean(UrlEncoder.class);
 //            encoder.setMyEncoder(urlEncoder);
