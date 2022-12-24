@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/")
 public class RestApiController {
 
-
     @GetMapping("/method/{id}")
     public String  get(@PathVariable Long id, @RequestParam String name){
-        log.info("get method ");
-        log.info("get method - id : {}", id);
-        log.info("get method - name : {}", name);
+        log.trace("get() Entry Point");
+
+        log.info("get() - id : {}", id);
+        log.info("get() - name : {}", name);
 
         return id + " " + name;
     }
@@ -23,6 +23,8 @@ public class RestApiController {
 
     @PostMapping("/method/post")
     public User00 post(@RequestBody User00 user){
+        log.trace("post() Entry Point");
+
         log.info("user : {}", user);
 
         return user;
