@@ -10,9 +10,9 @@ import org.springframework.context.ApplicationContext;
 public class IocApplication {
 
         public static void main(String[] args) {
-            SpringApplication.run(IocApplication.class, args);
+            SpringApplication.run(IocApplication.class, args);  // 스프링 어플리케이션이 실행이 되고 난 후
 
-            ApplicationContext context = ApplicationProvider.getContext();
+            ApplicationContext context = ApplicationProvider.getContext();  // context 가져오기
 
             String url = "www.naver.com/books/it?page=10&size=20&name=spring-boot";  // 인코딩 할 url
 
