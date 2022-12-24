@@ -3,7 +3,6 @@ package com.example.hello.controller;
 
 import com.example.hello.dto.SwaggerDto;
 import io.swagger.annotations.*;
-import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags = {"test API 입니다."})
