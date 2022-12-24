@@ -17,8 +17,8 @@ class HelloApplicationTests {
 
         /*
             Object Mapper
-                : Text JSON -> Object
-                : Object -> Text JSON
+                : Text JSON(req) -> Object
+                : Object -> Text JSON(res)
 
             이제까지는 Controller 로 들어온 req 안 json 을 -> object 로,
             rep Object 를 json 으로 자동으로 변환 되었는데 직접 변환 해보자
@@ -27,22 +27,23 @@ class HelloApplicationTests {
         var objectMapper = new ObjectMapper();
 
         // object -> text
-        // ObjectMapper 가 getMethod 를 활용한다.
-        // ALL 생성자
+        // ObjectMapper 가 getMethod(@Getter) 를 활용한다.
+        // -> 내가 작성한 클래스가 Object Mapper 로 활용될 때 class 안에 get 붙은 메소드 있으면 안됨
+        // ALL 생성자 있어야함
         var user = new User("user00", 30, "010-1111-1111", "address");
 
-        var text = objectMapper.writeValueAsString(user);
+        var toText = objectMapper.writeValueAsString(user);
         // toString
 
-        log.info("text : {}", text);
+        log.info("To_Text : {}", toText);
 
 
         // text -> object
-        // 디폴트 생성자
-        var objectUser = objectMapper.readValue(text, User.class);
+        // 디폴트 생성자 있어야함
+        var ToObjectUser = objectMapper.readValue(toText, User.class);
         // .readValue(json 형식의 text, 어떤 클래스로 바꿀건지?)
 
-        log.info("objectUser : {}", objectUser);
+        log.info("To_ObjectUser : {}", ToObjectUser);
 
     }
 
