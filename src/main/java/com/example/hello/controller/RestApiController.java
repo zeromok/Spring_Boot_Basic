@@ -1,6 +1,7 @@
 package com.example.hello.controller;
 
 
+import com.example.hello.annotation.Decode;
 import com.example.hello.annotation.Timer;
 import com.example.hello.dto.User00;
 import lombok.extern.log4j.Log4j2;
@@ -38,6 +39,16 @@ public class RestApiController {
 
         // DB Logic
         Thread.sleep(1000 * 2);
+    }
+
+    @Decode
+    @PutMapping("/method/put")
+    public User00 put(@RequestBody User00 user){
+        log.trace("put() Entry Point");
+
+        log.info("user : {}", user);
+
+        return user;
     }
 
 }// end class
