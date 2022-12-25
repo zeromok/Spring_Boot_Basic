@@ -1,6 +1,7 @@
 package com.example.hello.controller;
 
 
+import com.example.hello.annotation.Timer;
 import com.example.hello.dto.User00;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,14 @@ public class RestApiController {
         log.info("user : {}", user);
 
         return user;
+    }
+
+    @Timer
+    @DeleteMapping("/method/delete")
+    public void delete() throws InterruptedException {
+
+        // DB Logic
+        Thread.sleep(1000 * 2);
     }
 
 }// end class
