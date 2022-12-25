@@ -35,6 +35,7 @@ public class TimerAop {
         log.trace("Total Time : {}", stopWatch.getTotalTimeSeconds());
         log.trace("Object result : {}", result);
 
+        return result;
 
     }
 
