@@ -27,11 +27,11 @@ public class ParameterAop {
         // 메소드 이름 가져오기
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
-        log.trace(method.getName());
+        log.trace("메소드 이름 : {}()",method.getName());
 
 
+        // 메소드의 매개변수 가져오기
         Object[] args = joinPoint.getArgs();
-
 
         for(Object obj : args){
             log.info("type : {}", obj.getClass().getSimpleName());

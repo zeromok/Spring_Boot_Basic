@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/")
 public class RestApiController {
+    // 각 엔드포인트 안 로그들을 하나로 합치자 -> AOP
 
     @GetMapping("/method/{id}")
     public String  get(@PathVariable Long id, @RequestParam String name){
