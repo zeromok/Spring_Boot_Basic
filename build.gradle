@@ -55,6 +55,8 @@ dependencies {
     // Swagger
     implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 
+    // Object Mapper
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.1'
 
 }
 tasks.named('test') {
