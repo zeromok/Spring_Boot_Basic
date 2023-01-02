@@ -23,7 +23,8 @@ public class ClientController {
 //    public ResponseEntity<String> getHello() {  // 2.
     public ResponseEntity<User> getHello() {  // 3.
 //        return restTemplateService.hello();
-        return restTemplateService.post();
+//        return restTemplateService.post();
+        return restTemplateService.exchange();
     }
 
 } // end class
