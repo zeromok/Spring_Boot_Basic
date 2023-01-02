@@ -15,8 +15,9 @@ public class RestTemplateService {
 
     // http://localhost/api/server/hello
     // response
-//    public String hello() {
-public ResponseEntity<User> hello() {
+//    public String hello() {   // 1.
+//    public ResponseEntity<String> hello() { // 2.
+    public ResponseEntity<User> hello() { // 3.
 
     // GET 방식
         URI uri = UriComponentsBuilder
@@ -32,6 +33,7 @@ public ResponseEntity<User> hello() {
         log.info(uri.toString());
 
         RestTemplate restTemplate = new RestTemplate();
+
         // 1. String 으로 받을 때
 //        String result = restTemplate.getForObject(uri, String.class);
 
@@ -40,7 +42,7 @@ public ResponseEntity<User> hello() {
 //        log.info("code : {}", result.getStatusCode());
 //        log.info("body : {}", result.getBody());
 
-        // JSON 으로 받으려면?
+        // 3. JSON 으로 받으려면?
         ResponseEntity<User> result = restTemplate.getForEntity(uri, User.class);
         log.info("code : {}", result.getStatusCode());
         log.info("body : {}", result.getBody());
