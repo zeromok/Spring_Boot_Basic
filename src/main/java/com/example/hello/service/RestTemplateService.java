@@ -26,8 +26,8 @@ public class RestTemplateService {
         URI uri = UriComponentsBuilder
                 .fromUriString("http://localhost:9090")
                 .path("/api/server/hello")
-                .queryParam("name", "steve")
-                .queryParam("age", 30)
+                .queryParam("name", "steve")    // 4.
+                .queryParam("age", 30)  // 4.
 //              http://localhost:9090/api/server/hello?name=steve&age=30
                 .encode()
                 .build()
@@ -54,7 +54,8 @@ public class RestTemplateService {
     }
 
     // POST 방식
-    public ResponseEntity<User> post() {
+    public User post() {
+//    public ResponseEntity<User> post() {
         // http://localhost:9090/api/server/name/{userName}/age/{userAge}
 
         URI uri = UriComponentsBuilder
@@ -63,7 +64,7 @@ public class RestTemplateService {
                 .encode()
                 .build()
                 // expand() : PathVariable 에 순서대로 매핑
-                .expand("client", 10)
+                .expand("test", 10)
                 .toUri();
         log.info("uri : {}", uri.toString());
 
@@ -82,12 +83,13 @@ public class RestTemplateService {
         log.info("Headers : {}", responseEntity.getHeaders());
         log.info("Body : {}", responseEntity.getBody());
 
-        return responseEntity;
+        return responseEntity.getBody();
+//        return responseEntity;
     }
 
     // exchange 의 활용
-    public ResponseEntity<User> exchange() {
-
+//    public ResponseEntity<User> exchange() {
+    public User exchange() {
         // http://localhost:9090/api/server/name/{userName}/age/{userAge}
 
         URI uri = UriComponentsBuilder
@@ -115,7 +117,8 @@ public class RestTemplateService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<User> result = restTemplate.exchange(requestEntity, User.class);
 
-        return result;
+//        return result;
+        return result.getBody();
     }
 
 
