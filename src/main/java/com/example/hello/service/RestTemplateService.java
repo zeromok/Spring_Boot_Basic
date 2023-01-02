@@ -2,6 +2,7 @@ package com.example.hello.service;
 
 import com.example.hello.dto.User;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -50,4 +51,35 @@ public class RestTemplateService {
         return result;
     }
 
+    // POST 방식
+    public ResponseEntity<User> post() {
+        // http://localhost:9090/api/server/name/{userName}/age/{userAge}
+
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("/api/server/name/{userName}/age/{userAge}")
+                .encode()
+                .build()
+                // expand() : PathVariable 에 순서대로 매핑
+                .expand("client", 10)
+                .toUri();
+        log.info("uri : {}", uri.toString());
+
+        /*
+        * Http Body -> Object -> ObjectMapper -> Json -> Rest Template -> Http Body Json
+        *   POST 방식은 body 에 데이터를 넣어줘야한다. -> Http Body
+        *   Body 에 Object 로 넣으면 ObjectMapper 가 Json 으로 바꾸어 Rest Template 에서 Body 에 Json 형식으로 넣어줌
+        * */
+        User user = new User("steve", 10, null, null);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        // uri 에 user 보낼꺼고, User 타입으로 반환 받을꺼야
+        ResponseEntity<User> responseEntity = restTemplate.postForEntity(uri, user, User.class);
+        log.info("Code : {}", responseEntity.getStatusCode());
+        log.info("Headers : {}", responseEntity.getHeaders());
+        log.info("Body : {}", responseEntity.getBody());
+
+        return responseEntity;
+    }
 } // end class
