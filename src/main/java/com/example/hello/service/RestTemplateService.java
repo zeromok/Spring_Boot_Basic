@@ -1,8 +1,11 @@
 package com.example.hello.service;
 
+import com.example.hello.dto.Req;
+import com.example.hello.dto.ReqDTO;
+import com.example.hello.dto.ResDTO;
 import com.example.hello.dto.User;
-import com.example.hello.dto.UserRequest;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -119,6 +122,43 @@ public class RestTemplateService {
 
 //        return result;
         return result.getBody();
+    }
+
+    public Req<ResDTO> genericExchange() {
+
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("/api/server/post")
+                .encode()
+                .build()
+                .toUri();
+        log.info("uri : {}", uri.toString());
+
+        /*
+         * Http Body -> Object -> ObjectMapper -> Json -> Rest Template -> Http Body Json
+         *   POST 방식은 body 에 데이터를 넣어줘야한다. -> Http Body
+         *   Body 에 Object 로 넣으면 ObjectMapper 가 Json 으로 바꾸어 Rest Template 에서 Body 에 Json 형식으로 넣어줌
+         * */
+        ReqDTO reqDto = new ReqDTO();
+        reqDto.setName("test");
+        reqDto.setAge(100);
+
+        Req<ReqDTO> req = new Req<ReqDTO>();
+        req.setHeader(new Req.Header());
+        req.setBody(reqDto);
+
+        RequestEntity<Req<ReqDTO>> requestEntity = RequestEntity
+                .post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("x-authorization", "abcd")
+                .header("custom-header", "aaaa")
+                .body(req);
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Req<ResDTO>> result = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<>(){});
+
+        return result.getBody();
+
     }
 
 
