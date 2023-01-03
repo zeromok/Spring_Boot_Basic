@@ -1,10 +1,8 @@
 package com.example.hello.controller;
 
 import com.example.hello.dto.Req;
-import com.example.hello.dto.ResDTO;
 import com.example.hello.dto.User;
 import com.example.hello.service.RestTemplateService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +21,7 @@ public class ClientController {
     @GetMapping("/hello")
 //    public String getHello() {    // 1.
 //    public ResponseEntity<String> getHello() {  // 2.
-//    public ResponseEntity<User> getHello() {  // 3, exchange
+//    public User getHello() {  // 3, exchange
     public Req<User> post() {    // post
 
 //        return restTemplateService.hello();
