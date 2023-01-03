@@ -124,7 +124,7 @@ public class RestTemplateService {
         return result.getBody();
     }
 
-    public Req<ResDTO> genericExchange() {
+    public Req<User> genericExchange() {
 
         URI uri = UriComponentsBuilder
                 .fromUriString("http://localhost:9090")
@@ -139,15 +139,17 @@ public class RestTemplateService {
          *   POST 방식은 body 에 데이터를 넣어줘야한다. -> Http Body
          *   Body 에 Object 로 넣으면 ObjectMapper 가 Json 으로 바꾸어 Rest Template 에서 Body 에 Json 형식으로 넣어줌
          * */
-        ReqDTO reqDto = new ReqDTO();
-        reqDto.setName("test");
-        reqDto.setAge(100);
+//        ReqDTO reqDto = new ReqDTO();
+//        reqDto.setName("test");
+//        reqDto.setAge(100);
 
-        Req<ReqDTO> req = new Req<ReqDTO>();
+        User user = new User("_user", 100, null, null);
+
+        Req<User> req = new Req<User>();
         req.setHeader(new Req.Header());
-        req.setBody(reqDto);
+        req.setBody(user);
 
-        RequestEntity<Req<ReqDTO>> requestEntity = RequestEntity
+        RequestEntity<Req<User>> requestEntity = RequestEntity
                 .post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("x-authorization", "abcd")
@@ -155,7 +157,7 @@ public class RestTemplateService {
                 .body(req);
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Req<ResDTO>> result = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<>(){});
+        ResponseEntity<Req<User>> result = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<>(){});
 
         return result.getBody();
 
