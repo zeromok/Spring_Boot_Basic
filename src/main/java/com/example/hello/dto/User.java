@@ -5,6 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 /*
@@ -15,11 +20,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
 
+    @NotEmpty
+    @Size(min = 1, max = 10)
     private String name;
-    private int age;
+    @Min(value = 1)
+    @NotNull
+    private Integer age;
 
 //    @JsonProperty("phone_number")
-    private String phoneNumber;
-    private String address;
+//    private String phoneNumber;
+//    private String address;
 
 }// end class

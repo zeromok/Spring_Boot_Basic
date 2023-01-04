@@ -76,7 +76,7 @@ public class RestTemplateService {
         *   POST 방식은 body 에 데이터를 넣어줘야한다. -> Http Body
         *   Body 에 Object 로 넣으면 ObjectMapper 가 Json 으로 바꾸어 Rest Template 에서 Body 에 Json 형식으로 넣어줌
         * */
-        User user = new User("steve", 10, null, null);
+        User user = new User("steve", 10);
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -108,7 +108,7 @@ public class RestTemplateService {
          *   POST 방식은 body 에 데이터를 넣어줘야한다. -> Http Body
          *   Body 에 Object 로 넣으면 ObjectMapper 가 Json 으로 바꾸어 Rest Template 에서 Body 에 Json 형식으로 넣어줌
          * */
-        User user = new User("steve", 10, null, null);
+        User user = new User("steve", 10);
 
         RequestEntity<User> requestEntity = RequestEntity
                 .post(uri)
@@ -143,7 +143,7 @@ public class RestTemplateService {
 //        reqDto.setName("test");
 //        reqDto.setAge(100);
 
-        User user = new User("_user", 100, null, null);
+        User user = new User("_user", 100);
 
         Req<User> req = new Req<User>();
         req.setHeader(new Req.Header());

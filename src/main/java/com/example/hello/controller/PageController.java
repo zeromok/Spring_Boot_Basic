@@ -25,7 +25,7 @@ public class PageController {
 //        User user = new User();
         var user = new User();  // 타입추론(var)을 통해 좀 더 쉽게 생성자를 만들 수 있다.
         user.setName("user00");
-        user.setAddress("fdsafdsa");
+//        user.setAddress("fdsafdsa");
 
         return user;
 
