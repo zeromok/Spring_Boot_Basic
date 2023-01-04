@@ -25,7 +25,8 @@ public class YearMonthValidator implements ConstraintValidator<YearMonth, String
         try{
 
             // LocalDate 는 기본적으로 yyyyMMdd 이여서 뒤에 01 붙여줌
-            LocalDate localDate = LocalDate.parse(value + "01", DateTimeFormatter.ofPattern(this.pattern));
+//            LocalDate localDate = LocalDate.parse(value + "01", DateTimeFormatter.ofPattern(this.pattern));
+            LocalDate.parse(value + "01", DateTimeFormatter.ofPattern(this.pattern));
 
         }catch (Exception e) {
             return false;

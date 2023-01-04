@@ -11,7 +11,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 //@Constraint(validatedBy = { })
-@Constraint(validatedBy = {YearMonthValidator.class})
+@Constraint(validatedBy = {YearMonthValidator.class})   // 어떤 클래스를 가지고 검사할꺼야?
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 public @interface YearMonth {
