@@ -1,4 +1,4 @@
-package com.example.hello.advice;
+package com.example.hello.Exception;
 
 import com.example.hello.dto.Error;
 import com.example.hello.dto.ErrorResponse;
