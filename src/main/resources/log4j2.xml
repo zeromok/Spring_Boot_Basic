@@ -4,12 +4,14 @@
 <Configuration status="INFO" monitorInterval="30">
 <!--    최상위 요소-->
     <Properties>
-        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} -- %highlight{%5p} -- [ %5.50t ] %-1.50c{1.}.%-1.20M:%L  :    %highlight{%m%n%ex}</Property>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd|HH:mm:ss} -- %highlight{%5p}{TRACE=magenta} -- [ %5.50t ] %-1.50c{1.}.%-1.20M(%L)  :    %highlight{%m%n%ex}{TRACE=magenta}
+        </Property>
     </Properties>
 
     <Appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
         </Console>
     </Appenders>
 

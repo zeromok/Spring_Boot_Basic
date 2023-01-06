@@ -3,6 +3,7 @@ package com.example.hello.Exception;
 import com.example.hello.dto.Error;
 import com.example.hello.dto.ErrorResponse;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -54,27 +55,29 @@ public class GlobalControllerAdvice {
             log.info("- value : {}", value);
             log.trace("----------------");
 
-            Error errorMessage = new Error();
-            errorMessage.setField(fieldName);
-            errorMessage.setMessage(message);
-            errorMessage.setInvalidValue(value);
+            Error errorMessage = new Error(fieldName, message, value);
+//            errorMessage.setField(fieldName);
+//            errorMessage.setMessage(message);
+//            errorMessage.setInvalidValue(value);
 
             errorList.add(errorMessage);
         });
 
-        ErrorResponse errorResponse = new ErrorResponse();
-        errorResponse.setErrorList(errorList);
-        errorResponse.setMessage("");
-        errorResponse.setRequestUrl(req.getRequestURL().toString());
-        errorResponse.setStatusCode(HttpStatus.BAD_REQUEST.toString());
-        errorResponse.setResultCode("FAIL");
+        ErrorResponse errorResponse = new ErrorResponse(req.getRequestURL().toString(), HttpStatus.BAD_REQUEST.toString(), "400", "FAIL", "", errorList);
+//        errorResponse.setErrorList(errorList);
+//        errorResponse.setMessage("");
+//        errorResponse.setRequestUrl(req.getRequestURL().toString());
+//        errorResponse.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+//        errorResponse.setResultCode("FAIL");
 
 //        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
-    public ResponseEntity constraintViolationException(ConstraintViolationException e) {
+    public ResponseEntity constraintViolationException(ConstraintViolationException e, HttpServletRequest req) {
+
+        List<Error> errorList = new ArrayList<>();
 
         // 예외 가 제공하는 메소드 활용
         e.getConstraintViolations().forEach( (error) -> {
@@ -89,9 +92,25 @@ public class GlobalControllerAdvice {
             log.info("- field : {}", field);
             log.info("- message : {}", message);
             log.info("- invalidValue : {}", invalidValue);
+
+            Error errormessage = new Error();
+            errormessage.setField(field);
+            errormessage.setMessage(message);
+            errormessage.setInvalidValue(invalidValue);
+
+            errorList.add(errormessage);
         });
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+        errorResponse.setRequestUrl(req.getRequestURL().toString());
+        errorResponse.setCode("");
+        errorResponse.setMessage("");
+        errorResponse.setResultCode("FAIL");
+        errorResponse.setErrorList(errorList);
+
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(value = MissingServletRequestParameterException.class)

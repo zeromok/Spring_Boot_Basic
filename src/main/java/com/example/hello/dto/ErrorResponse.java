@@ -1,18 +1,22 @@
 package com.example.hello.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ErrorResponse {
 
-    private String  statusCode;
     private String requestUrl;
+    private String  statusCode;
     private String code;
-    private String message;
     private String resultCode;
+    private String message;
 
-    List<Error> errorList;
+    private List<Error> errorList;
 
 }
