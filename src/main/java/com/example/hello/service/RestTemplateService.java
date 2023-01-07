@@ -6,14 +6,17 @@ import com.example.hello.dto.ResDTO;
 import com.example.hello.dto.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.http.client.reactive.ClientHttpConnector;
+import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserter;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collections;
 
 @Log4j2
 @Service
@@ -143,7 +146,7 @@ public class RestTemplateService {
 //        reqDto.setName("test");
 //        reqDto.setAge(100);
 
-        User user = new User("_user", 100);
+        User user = new User("TestName", 100);
 
         Req<User> req = new Req<User>();
         req.setHeader(new Req.Header());
@@ -159,8 +162,27 @@ public class RestTemplateService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Req<User>> result = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<>(){});
 
-        return result.getBody();
+        // WebClient
+        // Request - RestTemplate - Response [Entity] 들은 짝꿍이여서, 여기서는 쓸 필요가 없다.
+        // 받으려면 받을수는 있음
+        WebClient client = WebClient.create("http://localhost:9090");
+        log.trace("client : {}", client);
 
+//        ResponseEntity<Req<User>> response = client.post()
+        Req<User> response = client.post()
+                .uri(uriBuilder -> uriBuilder.path("/api/server/post").build())
+                .bodyValue(req)
+                .header("x-authorization", "testHeader")
+                .header("custom-header", "testCustomHeader")
+                .retrieve()
+//                .toEntity(new ParameterizedTypeReference<Req<User>>() {})
+                .bodyToMono(Req.class).block();
+        log.trace("response : {}", response);
+
+//        return result.getBody();
+
+        // WebClient
+        return response;
     }
 
 
