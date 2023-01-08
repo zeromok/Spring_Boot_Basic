@@ -18,30 +18,23 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws JsonProcessingException {
-        // Object Mapper
+        log.trace("=== main() invoked ===");
 
+        // Object Mapper
         ObjectMapper objectMapper = new ObjectMapper();
 
-        User user = new User();
-        user.setName("홍길동");
-        user.setAge(10);
 
-        Car car1 = new Car();
-        car1.setName("K5");
-        car1.setCarNumber("11가1111");
-        car1.setType("세단");
+        Car car1 = new Car("K5", "11가1111", "세단");
 
-        Car car2 = new Car();
-        car2.setName("Q5");
-        car2.setCarNumber("22가2222");
-        car2.setType("SUV");
+        Car car2 = new Car("Q5", "22가2222", "SUV");
 
         List<Car> list = Arrays.asList(car1, car2);
-        user.setCars(list);
 
+        User user = new User("홍길동", 10, list);
         log.info("user : {}", user);
         //  user : User(name=홍길동, age=10, cars=[Car(name=K5, carNumber=11가1111, type=세단), Car(name=Q5, carNumber=22가2222, type=SUV)])
 
+        // Json 형식으로 변환
         String json = objectMapper.writeValueAsString(user);
         log.info("json : {}", json);
         // json : {"name":"홍길동","age":10,"cars":[{"name":"K5","car_number":"11가1111","TYPE":"세단"},{"name":"Q5","car_number":"22가2222","TYPE":"SUV"}]}
