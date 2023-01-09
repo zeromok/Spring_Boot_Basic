@@ -27,7 +27,7 @@ import java.util.stream.StreamSupport;
 public class GlobalControllerAdvice {
 
     @ExceptionHandler(value = Exception.class)  // value : 어떤 예외 잡을꺼야?
-    public ResponseEntity exception(Exception e) {
+    public ResponseEntity exception(Exception e) { // 예외값을 매개변수로 받을 수 있다.
         log.trace("e : {}", e);
         log.trace("e.getLocalizedMessage : {}", e.getLocalizedMessage());
         log.trace("e.getClass : {}", e.getClass());
@@ -55,23 +55,16 @@ public class GlobalControllerAdvice {
             log.trace("----------------");
 
             Error errorMessage = new Error(fieldName, message, value);
-//            errorMessage.setField(fieldName);
-//            errorMessage.setMessage(message);
-//            errorMessage.setInvalidValue(value);
 
             errorList.add(errorMessage);
         });
 
         ErrorResponse errorResponse = new ErrorResponse(req.getRequestURL().toString(), HttpStatus.BAD_REQUEST.toString(), "400", "FAIL", "", errorList);
-//        errorResponse.setErrorList(errorList);
-//        errorResponse.setMessage("");
-//        errorResponse.setRequestUrl(req.getRequestURL().toString());
-//        errorResponse.setStatusCode(HttpStatus.BAD_REQUEST.toString());
-//        errorResponse.setResultCode("FAIL");
 
 //        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-    }
+
+    } // methodArgumentNotValidException()
 
     @ExceptionHandler(value = ConstraintViolationException.class)
     public ResponseEntity constraintViolationException(ConstraintViolationException e, HttpServletRequest req) {
