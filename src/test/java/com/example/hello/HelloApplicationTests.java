@@ -26,11 +26,13 @@ class HelloApplicationTests {
 
         var objectMapper = new ObjectMapper();
 
-        // object -> text
+        // ==============
+        // Object -> Text
+        // ==============
         // ObjectMapper 가 getMethod(@Getter) 를 활용한다.
         // -> 내가 작성한 클래스가 Object Mapper 로 활용될 때 class 안에 get 붙은 메소드 있으면 안됨
         // ALL 생성자 있어야함
-        var user = new User("user00", 30, "010-1111-1111", "address");
+        var user = new User("user00", 30);
 
         var toText = objectMapper.writeValueAsString(user);
         // toString
@@ -38,7 +40,9 @@ class HelloApplicationTests {
         log.info("To_Text : {}", toText);
 
 
-        // text -> object
+        // ==============
+        // Text -> Object
+        // ==============
         // 디폴트 생성자 있어야함
         var ToObjectUser = objectMapper.readValue(toText, User.class);
         // .readValue(json 형식의 text, 어떤 클래스로 바꿀건지?)
