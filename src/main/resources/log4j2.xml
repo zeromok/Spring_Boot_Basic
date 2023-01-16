@@ -19,6 +19,7 @@
         <Logger name="com.example.hello" level="trace" />
         <Logger name="org.springframework" level="warn" />
          <Logger name="com.zaxxer.hikari" level="warn" />
+         <Logger name="junit" level="trace" />
 
 
         <!-- log4jdbc -->
