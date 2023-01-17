@@ -13,8 +13,8 @@ public class Main {
 //        log.info("calculator : {}", calculator);
 
         // 달러 계산기
-        MarketApi api = new MarketApi();
-        CalculatorTest2 dollar = new CalculatorTest2(api);
+        MarketApi api = new MarketApi(); // 여러 마켓이 될 수있음, naver, kakao, ... 의 달러 시세
+        CalculatorTest2 dollar = new CalculatorTest2(api); // 생성자 주입을 통해 초기화
         dollar.init();
 
         Calculator calculator = new Calculator(dollar);

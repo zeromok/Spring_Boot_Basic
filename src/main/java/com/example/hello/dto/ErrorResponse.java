@@ -16,7 +16,6 @@ public class ErrorResponse {
     private String code;
     private String resultCode;
     private String message;
-
     private List<Error> errorList;
 
 }
